@@ -1,0 +1,82 @@
+{
+  "name": "react-styled-kit",
+  "version": "1.0.0",
+  "description": "React Starter kit, with styled-components, storybook, redux, saga, husky, prettier, tests and more...",
+  "author": "Luka Giorgadze",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LukaGiorgadze/react-styled-kit.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
+    "start": "webpack-dev-server --mode development --open --config webpack.dev.js",
+    "build": "webpack --mode production --config webpack.prod.js",
+    "analyze": "webpack --mode production --config webpack.prod.js --profile",
+    "pretty": "prettier --write \"src/**/*.{jsx,js,json}\"",
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,json}": [
+      "npm run pretty",
+      "git add"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^4.0.0-alpha.16",
+    "@storybook/addon-info": "^4.0.0-alpha.16",
+    "@storybook/addon-notes": "^4.0.0-alpha.16",
+    "@storybook/addon-options": "^4.0.0-alpha.16",
+    "@storybook/addon-viewport": "^4.0.0-alpha.16",
+    "@storybook/cli": "^4.0.0-alpha.16",
+    "@storybook/react": "^4.0.0-alpha.16",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "compression-webpack-plugin": "^1.1.11",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.0.0-rc.13",
+    "img-loader": "^3.0.0",
+    "jest": "^23.4.2",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.14.2",
+    "redux-devtools": "^3.4.1",
+    "style-loader": "^0.22.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.16.5",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.4",
+    "why-did-you-update": "^0.1.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-hot-loader": "^4.0.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-saga": "^0.16.0",
+    "styled-components": "^3.4.2"
+  }
+}

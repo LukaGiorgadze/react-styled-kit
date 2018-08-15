@@ -7,6 +7,7 @@ desktop.ini
 .grunt
 _SpecRunner.html
 __benchmarks__
+__snapshots__
 build/
 dist/
 remote-repo/

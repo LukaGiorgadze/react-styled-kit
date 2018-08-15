@@ -1,30 +1,42 @@
 // Libraries
-import { createStore, applyMiddleware, compose } from "redux";
-import createSagaMiddleware from "redux-saga";
+import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { routerMiddleware } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
 
 // Import reducers and sagas
-import allReducers from "./reducers";
-import mySaga from "./sagas/index";
+import allReducers from './reducers';
+import rootSaga from './sagas/index';
 
 // Create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
-// Create store and mount everything in it
-let composers = [applyMiddleware(sagaMiddleware)];
+// Build the middleware for intercepting and dispatching navigation actions
+const _routerMiddleware = routerMiddleware(createHistory());
 
-// TODO: Remove on production
-// Create Redux dev tools for chrome
-if (process.env.NODE_ENV === "development") {
-  const reduxDevTools =
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__();
-  reduxDevTools && composers.push(reduxDevTools);
+// Middlewares
+const middlewares = [sagaMiddleware, _routerMiddleware];
+
+let composeEnhancers = compose;
+if (process.env.NODE_ENV === 'development') {
+  const { logger } = require('redux-logger');
+  middlewares.push(logger);
+  /* eslint-disable no-underscore-dangle */
+  composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+    // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    actionsBlacklist: ['REDUX_STORAGE_SAVE'],
+  });
+  /* eslint-enable */
 }
 
-let store = createStore(allReducers, compose(applyMiddleware(sagaMiddleware)));
+// Create store
+let store = createStore(
+  allReducers,
+  composeEnhancers(applyMiddleware(...middlewares)),
+);
 
 // Export store
 export default store;
 
 // Then run the saga
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(rootSaga);

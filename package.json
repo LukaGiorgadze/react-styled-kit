@@ -1,12 +1,13 @@
 {
-  "name": "react-styled-kit",
+  "name": "scfrontend",
   "version": "1.0.0",
-  "description": "React Starter kit, with styled-components, storybook, redux, saga, husky, prettier, tests and more...",
-  "author": "Luka Giorgadze",
+  "description": "Ownabit Dashboard Platform",
+  "private": true,
+  "author": "Ownabit",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LukaGiorgadze/react-styled-kit.git"
+    "url": "https://lukagiorgadzeownabit@bitbucket.org/tokenizator/scfrontend.git"
   },
   "main": "index.js",
   "scripts": {
@@ -54,12 +55,15 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.0.0-rc.13",
     "img-loader": "^3.0.0",
-    "jest": "^23.4.2",
-    "lint-staged": "^7.2.0",
+    "jest": "^23.5.0",
+    "jest-styled-components": "^6.0.1",
+    "lint-staged": "^7.2.2",
     "prettier": "^1.14.2",
+    "react-test-renderer": "^16.4.2",
     "redux-devtools": "^3.4.1",
-    "style-loader": "^0.22.0",
-    "url-loader": "^1.0.1",
+    "redux-logger": "^3.0.6",
+    "style-loader": "^0.22.1",
+    "url-loader": "^1.1.0",
     "webpack": "^4.16.5",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.1.0",
@@ -68,13 +72,15 @@
     "why-did-you-update": "^0.1.1"
   },
   "dependencies": {
+    "history": "^4.7.2",
     "lodash": "^4.17.10",
+    "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-hot-loader": "^4.0.0",
+    "react-hot-loader": "^4.3.4",
     "react-redux": "^5.0.7",
-    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-router-redux": "^4.0.8",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
     "styled-components": "^3.4.2"

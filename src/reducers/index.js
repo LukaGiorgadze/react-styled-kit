@@ -1,9 +1,12 @@
 // Libraries
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-// Components
-import helloWorld from "./helloWorld";
+// Import Reducers
+import { routerReducer } from 'react-router-redux';
+import user from 'reducers/user';
 
+// Combine All Reducers
 export default combineReducers({
-  helloWorld
+  user,
+  router: routerReducer,
 });

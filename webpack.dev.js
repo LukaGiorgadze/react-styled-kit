@@ -1,24 +1,28 @@
-const merge = require("webpack-merge");
-const Path = require("path");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const common = require("./webpack.common.js");
+// Libraries
+const merge = require('webpack-merge');
+const Path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const common = require('./webpack.common.js');
 
-const publicPath = process.env.BASENAME || "/";
+// Config
+const template = 'index.html';
+const index = 'index.html';
 
+// Webpack cfg
 module.exports = merge(common, {
-  mode: "development",
-  devtool: "inline-source-map",
+  mode: 'development',
+  devtool: 'inline-source-map',
   plugins: [
     new HtmlWebPackPlugin({
-      template: Path.join(__dirname, "public", "index.html"),
-      filename: "index.html"
-    })
+      template: Path.resolve(common.resolve.alias.public, template),
+      filename: index,
+    }),
   ],
   devServer: {
-    contentBase: Path.resolve(__dirname, "build"),
+    contentBase: common.output.path,
     compress: true,
-    publicPath,
+    publicPath: common.output.publicPath,
     historyApiFallback: true,
-    port: 8080
-  }
+    port: 8080,
+  },
 });

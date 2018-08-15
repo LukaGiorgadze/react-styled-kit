@@ -1,23 +1,30 @@
-const merge = require("webpack-merge");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const Webpack = require("webpack");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+// Libraries
+const Webpack = require('webpack');
+const merge = require('webpack-merge');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
-const CompressionPlugin = require("compression-webpack-plugin");
-const Path = require("path");
-const common = require("./webpack.common.js");
+const CompressionPlugin = require('compression-webpack-plugin');
+const Path = require('path');
+const common = require('./webpack.common.js');
 
+// Config
+const template = 'index.html';
+const index = 'index.html';
+
+// Webpack cfg
 module.exports = merge(common, {
-  mode: "production",
-  devtool: "source-map",
-  stats: "errors-only",
+  mode: 'production',
+  devtool: 'source-map',
+  stats: 'errors-only',
   optimization: {
-    minimize: true
+    minimize: true,
   },
   plugins: [
+    new Webpack.optimize.ModuleConcatenationPlugin(),
     new HtmlWebPackPlugin({
-      template: Path.join(__dirname, "public", "index.html"),
-      filename: "index.html",
+      template: Path.resolve(common.resolve.alias.public, template),
+      filename: index,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -28,16 +35,18 @@ module.exports = merge(common, {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true
-      }
+        minifyURLs: true,
+      },
     }),
-    new Webpack.optimize.ModuleConcatenationPlugin(),
     new CompressionPlugin({
-      asset: "[path].gz[query]",
-      algorithm: "gzip",
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
-      minRatio: 0
-    })
-  ]
+      minRatio: 0,
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+    }),
+  ],
 });

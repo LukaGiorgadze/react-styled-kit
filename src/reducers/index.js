@@ -8,5 +8,5 @@ import user from 'reducers/user';
 // Combine All Reducers
 export default combineReducers({
   user,
-  router: routerReducer,
+  routing: routerReducer,
 });

@@ -4,12 +4,12 @@ import { Provider } from 'react-redux';
 
 // Import Routes and store
 import store from './store';
-import { Routes } from './routes';
+import Wrapper from 'components/wrapper';
 
 // Render everything
 export default () => (
   <Provider store={store}>
-    <Routes />
+    <Wrapper />
   </Provider>
 );
 

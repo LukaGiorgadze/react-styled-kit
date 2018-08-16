@@ -7,6 +7,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const CompressionPlugin = require('compression-webpack-plugin');
 const Path = require('path');
 const common = require('./webpack.common.js');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 
 // Config
 const template = 'index.html';
@@ -44,6 +46,10 @@ module.exports = merge(common, {
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
       minRatio: 0,
+    }),
+    new OptimizeCssAssetsPlugin({
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+      canPrint: true,
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',

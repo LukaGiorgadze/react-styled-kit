@@ -8,7 +8,7 @@
 * The UI development environment with [Storybook](https://storybook.js.org/) 
 * Test with jest;
 * Code Analyzer;
-* Automatic code prettier before commit (on `git add .`);
+* Automatic code prettier before push (on `git commit .`);
 * Redux & Redux-Saga;
 * & Much more...
 
@@ -59,10 +59,13 @@ You can also configure webpack for development in **webpack.dev.js** and for pro
 
 All test and stories files are located in folder of component, for example:
 
-* /ui/elements/button/
-    * index.jsx
-    * index.test.jsx
-    * index.stories.jsx
+* /ui/elements/
+    * button.jsx
+    * button.test.jsx
+    * button.stories.jsx
+    * slider.jsx
+    * slider.test.jsx
+    * slider.stories.jsx
 
 
 We have aliases for shorten directory (component/file) access, for example, if you want to import something from

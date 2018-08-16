@@ -1,6 +1,6 @@
 // Libraries
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link, Push } from 'react-router-dom';
 
 // Components
 import Home from 'components/home';
@@ -22,9 +22,9 @@ export const Routes = () => (
           <Link to="/contact">Contact</Link>
         </li>
       </ul>
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} />
+      <Route exact path="/" component={Home}/>
+      <Route path="/about" component={About}/>
+      <Route path="/contact" component={Contact}/>
     </div>
   </BrowserRouter>
 );

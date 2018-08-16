@@ -20,6 +20,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
     alias: {
       public: Path.resolve(__dirname, `./${publicDir}/`),
+      src: Path.resolve(__dirname, `./src/`),
       components: Path.resolve(__dirname, './src/components/'),
       ui: Path.resolve(__dirname, './src/ui/'),
       actions: Path.resolve(__dirname, './src/actions/'),

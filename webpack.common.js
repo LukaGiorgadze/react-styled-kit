@@ -1,12 +1,14 @@
 // Libraries
 const Path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 // Config
 const publicUrl = '/';
 const publicDir = 'public';
 const buildPath = 'build';
-const bundle = 'bundle.js';
+const bundle = '[hash].js';
 
 // Webpack cfg
 module.exports = {
@@ -28,7 +30,12 @@ module.exports = {
       sagas: Path.resolve(__dirname, './src/sagas/'),
     },
   },
-  plugins: [new CleanWebpackPlugin([buildPath])],
+  plugins: [
+    new CleanWebpackPlugin([buildPath]),
+    new MiniCssExtractPlugin({
+      filename: '[hash].css',
+    }),
+  ],
   module: {
     rules: [
       {
@@ -62,6 +69,28 @@ module.exports = {
           },
           {
             loader: 'img-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        include: Path.resolve(__dirname, publicDir),
+        loader: 'file-loader',
+        options: {
+          name: './fonts/[name].[ext]',
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true,
+            },
           },
         ],
       },

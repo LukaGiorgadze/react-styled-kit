@@ -1,7 +1,7 @@
 // Libraries
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { routerMiddleware } from 'react-router-redux';
+import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 
 // Import reducers and sagas
@@ -13,6 +13,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 // Build the middleware for intercepting and dispatching navigation actions
 const _routerMiddleware = routerMiddleware(createHistory());
+
 
 // Middlewares
 const middlewares = [sagaMiddleware, _routerMiddleware];
@@ -37,6 +38,9 @@ let store = createStore(
 
 // Export store
 export default store;
+
+// Export history
+export const history = syncHistoryWithStore(createHistory(), store);
 
 // Then run the saga
 sagaMiddleware.run(rootSaga);

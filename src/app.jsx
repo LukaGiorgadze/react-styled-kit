@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 // Import Routes and store
 import store from './store';
-import Wrapper from 'components/wrapper';
+import Wrapper from 'components/index';
 
 // Render everything
 export default () => (

@@ -22,10 +22,13 @@ if (process.env.NODE_ENV === 'development') {
   const { logger } = require('redux-logger');
   middlewares.push(logger);
   /* eslint-disable no-underscore-dangle */
-  composeEnhancers = typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-    // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-    actionsBlacklist: ['REDUX_STORAGE_SAVE'],
-  }) : compose;
+  composeEnhancers =
+    typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+          // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+          actionsBlacklist: ['REDUX_STORAGE_SAVE'],
+        })
+      : compose;
   /* eslint-enable */
 }
 

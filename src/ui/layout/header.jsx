@@ -3,7 +3,6 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import Icon from 'ui/elements/icon';
 
 // Styled Components
 const Header = styled.header`
@@ -21,14 +20,7 @@ const Left = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const Burger = styled(Icon)`
-  &&& {
-    padding: 30px;
-    background-color: #444a55;
-    cursor: pointer;
-    border: 1px solid red;
-  }
-`;
+
 const Logo = styled.span`
   padding: 23px 0;
   font-size: 20px;
@@ -71,14 +63,7 @@ const Search = styled.input`
   }
   outline: none;
 `;
-const SearchIcon = styled(Icon)`
-  &&& {
-    position: absolute;
-    top: 0;
-    right: 8px;
-    cursor: pointer;
-  }
-`;
+
 
 const Right = styled.div`
   color: #444a55;
@@ -90,13 +75,13 @@ class HeaderApp extends React.Component {
     return (
       <Header>
         <Left>
-          <Burger icon="menu" />
+          Icon
           <Logo>Example.com</Logo>
         </Left>
         <Middle>
           <SearchContainer>
             <Search type="text" placeholder="Search for&hellip;" />
-            <SearchIcon icon="search" />
+            Icon
           </SearchContainer>
         </Middle>
         <Right>Account</Right>

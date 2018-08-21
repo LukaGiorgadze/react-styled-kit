@@ -3,8 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Content = styled.main`
-  flex: 1;
-  background: #f5f6fa;
+  height: 100vh;
+  overflow-y: auto;
+  background: #f1f1f1;
 `;
 
 // Wrapper

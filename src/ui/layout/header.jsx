@@ -3,22 +3,34 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import Icon from 'ui/elements/icon';
 
 // Styled Components
 const Header = styled.header`
-  display: flex;
-  position: sticky;
-  top: 0;
-  align-items: center;
-  grid-column: span 3;
+  display: grid;
+  grid-template-columns: 256px 1fr 200px;
   height: 72px;
   background-color: #fff;
   box-shadow: -10px 9px 21px 0 rgba(128, 152, 213, 0.08);
+  grid-column: span 3;
+  z-index: 3;
 `;
 
-const Logo = styled.div`
-  width: 181px;
-  height: 24px;
+const Left = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const Burger = styled(Icon)`
+  &&& {
+    padding: 30px;
+    background-color: #444a55;
+    cursor: pointer;
+    border: 1px solid red;
+  }
+`;
+const Logo = styled.span`
+  padding: 23px 0;
   font-size: 20px;
   font-weight: 500;
   font-style: normal;
@@ -27,6 +39,49 @@ const Logo = styled.div`
   letter-spacing: 4px;
   color: #444a55;
   text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  &:hover {
+    color: #ef4e74;
+  }
+`;
+
+const Middle = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const SearchContainer = styled.div`
+  position: relative;
+  width: 500px;
+  color: #aaa;
+  border: 0;
+  border-bottom: 1px solid #a2a5aa;
+`;
+const Search = styled.input`
+  width: 500px;
+  margin: 0;
+  padding: 5px 40px 5px 10px;
+  color: #aaa;
+  border: 0;
+  &::placeholder {
+    color: #ccc;
+  }
+  outline: none;
+`;
+const SearchIcon = styled(Icon)`
+  &&& {
+    position: absolute;
+    top: 0;
+    right: 8px;
+    cursor: pointer;
+  }
+`;
+
+const Right = styled.div`
+  color: #444a55;
 `;
 
 // Component
@@ -34,7 +89,17 @@ class HeaderApp extends React.Component {
   render() {
     return (
       <Header>
-        <Logo>Company Logo</Logo>
+        <Left>
+          <Burger icon="menu" />
+          <Logo>Example.com</Logo>
+        </Left>
+        <Middle>
+          <SearchContainer>
+            <Search type="text" placeholder="Search for&hellip;" />
+            <SearchIcon icon="search" />
+          </SearchContainer>
+        </Middle>
+        <Right>Account</Right>
       </Header>
     );
   }

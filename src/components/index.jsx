@@ -18,14 +18,11 @@ import 'public/css/global.css';
 
 // Styled Components
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  @media (min-width: 768px) {
-    display: grid;
-    grid-template-columns: 256px 1fr;
-    grid-template-rows: auto 1fr auto;
-  }
+  display: grid;
+  grid-template-columns: 256px 1fr;
+  grid-template-areas:
+    'header header'
+    'aside main';
 `;
 
 // Wrapper

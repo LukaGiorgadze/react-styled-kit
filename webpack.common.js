@@ -72,7 +72,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        test: /\.(eot|ttf|woff|woff2)$/,
         include: Path.resolve(__dirname, publicDir),
         loader: 'file-loader',
         options: {
